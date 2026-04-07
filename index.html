@@ -266,7 +266,7 @@ body::before {
   display: flex; align-items: center; justify-content: center;
 }
 
-/* CIRCLE CONTAINER - Orbit ko maintain rakhne ke liye original size */
+/* CIRCLE CONTAINER - Orbit ko maintain rakhne ke liye */
 .prof-center.profile-image-container {
   width: 140px; 
   height: 140px;
@@ -279,22 +279,38 @@ body::before {
   position: relative; 
   z-index: 30 !important;
   box-shadow: 0 0 40px rgba(212,255,0,.1);
-  /* YAHAN SE 'overflow: hidden' HATA DIYA HAI TAAKI ARMS BAHAR NIKAL SAKEIN */
 }
 
-/* IMAGE CLASS - Arms ko bahar nikalne ke liye width badha di hai */
+/* ==========================================
+   DESKTOP CSS (Aapka pasandida Scale 2)
+   ========================================== */
 .profile-image {
-  position: absolute; /* Isse image circle ke bounds se azad ho jayegi */
-  width: 190%; /* Circle se badi hogi taaki saare gears fit ho jayein */
+  position: absolute; 
+  width: 190%; 
   height: auto;
   object-fit: contain;
-  transform: scale(2);
+  transform: scale(2); /* Desktop pe ekdum perfect */
   transition: transform 0.3s ease;
   z-index: 31;
 }
 
+/* Desktop Hover */
 .prof-center.profile-image-container:hover .profile-image {
-  transform: scale(1.); /* Hover par thoda aur bada hoga */
+  transform: scale(2.1); /* Hover par thoda sa bada hoga */
+}
+
+/* ==========================================
+   MOBILE CSS (Mobile ke liye chhota scale)
+   ========================================== */
+@media (max-width: 600px) {
+  .profile-image {
+    transform: scale(1.2); /* Mobile par scale kam kar diya taaki screen na fate */
+  }
+  
+  /* Mobile Hover */
+  .prof-center.profile-image-container:hover .profile-image {
+    transform: scale(1.5); 
+  }
 }
 
 .orbit-ring { position: absolute; border-radius: 50%; border: 1px solid rgba(255,255,255,.06); animation: spin linear infinite; z-index: 15; }
